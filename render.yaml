@@ -12,6 +12,7 @@ services:
   buildCommand: |
     pip install --upgrade pip setuptools
     pip install -r requirements.txt
+    ls
   startCommand: gunicorn --chdir src app:server
   autoDeploy: false
 version: "1"
