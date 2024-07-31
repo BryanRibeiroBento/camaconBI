@@ -1,13 +1,17 @@
+# Exported from Render on 2024-07-31T20:04:02Z
 services:
-  # See https://render.com/docs/blueprint-spec for more info on render blueprints
-  - type: web
-    name: camacon-bi
-    env: python
-    plan: free
-    # A requirements.txt file must exist
-    buildCommand: pip install -r requirements.txt
-    # A src/app.py file must exist and contain `server=app.server`
-    startCommand: gunicorn --chdir src app:server
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.10.0
+- type: web
+  name: camacon-bi-91d2
+  runtime: python
+  repo: https://github.com/BryanRibeiroBento/camaconBI
+  plan: free
+  envVars:
+  - key: PYTHON_VERSION
+    sync: false
+  region: oregon
+  buildCommand: |
+    pip install --upgrade pip setuptools
+    pip install -r requirements.txt
+  startCommand: python app.py
+  autoDeploy: false
+version: "1"
