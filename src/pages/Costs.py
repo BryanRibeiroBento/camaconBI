@@ -19,7 +19,7 @@ dash.register_page(__name__,
 )
 
 #====================DATA FRAME====================
-df_costs = pd.read_excel('/Users/bryanribeiro/Desktop/python/multipage_project/data/base_custos.xlsx')
+df_costs = pd.read_excel('./data/base_custos.xlsx')
 
 df_costs['Data'] = pd.to_datetime(df_costs['Data'])
 df_costs['MES'] = df_costs['Data'].dt.month
@@ -30,7 +30,7 @@ pd.set_option('display.max_rows',None)
 
 
 
-# print(df_costs)
+
 
 
 
@@ -510,7 +510,7 @@ def typesGraph(types):
     if types is None or len(types) == 0:
         return px.line(title = 'Selecione Uma Categoria Para Visualizar o Gráfico') 
     df_selected = df_types[df_types['TIPO'].isin(list(types))]
-    print(df_selected)
+
     fig3 = px.line(df_selected, x='MES', y='VALOR', color='TIPO', markers=True)
     return fig3
 

@@ -21,8 +21,8 @@ dash.register_page(__name__,
 )
 
 #====================DATA FRAME====================
-df = pd.read_excel('/Users/bryanribeiro/Desktop/python/multipage_project/data/base_faturamento.xlsx')
-df_total_costs = pd.read_excel('/Users/bryanribeiro/Desktop/python/multipage_project/data/base_custos_totais.xlsx')
+df = pd.read_excel('./data/base_faturamento.xlsx')
+df_total_costs = pd.read_excel('./data/base_custos_totais.xlsx')
 
 
 #==================================================
@@ -284,7 +284,7 @@ def setCosts(month):
     rental = format_cost(total_tipo.get('LOCACAO', 0))
     drilling= format_cost(total_tipo.get('PERFURACAO', 0))
     sales = format_cost(total_tipo.get('VENDA', 0))
-    print(sales)
+
     # diesel = format_cost(total_tipo.get('DIESEL', 0))
    
         
@@ -416,7 +416,7 @@ def profitIncomeGraph(types):
     df_profit['TIPO'] = 'Lucro'
 
     df_combined = pd.concat([df_income, df_profit])
-    print(df_combined)
+
     fig4 = px.line(df_combined, x='MES', y='TOTAL', color='TIPO', markers=True)
     
     
