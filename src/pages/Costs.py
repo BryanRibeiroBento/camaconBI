@@ -3,10 +3,8 @@ from dash import html,dcc,Input,Output,callback
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
-from dash_bootstrap_templates import ThemeSwitchAIO
-import pandas_datareader.data as web
 import dash_bootstrap_components as dbc
-import datetime
+import os
 
 
 
@@ -19,7 +17,9 @@ dash.register_page(__name__,
 )
 
 #====================DATA FRAME====================
-df_costs = pd.read_excel('./data/base_custos.xlsx')
+base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+costs_file = os.path.join(base_dir, 'data', 'base_custos.xlsx')
+df_costs = pd.read_excel(costs_file)
 
 df_costs['Data'] = pd.to_datetime(df_costs['Data'])
 df_costs['MES'] = df_costs['Data'].dt.month

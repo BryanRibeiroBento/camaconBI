@@ -4,6 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import dash_bootstrap_components as dbc
+import os
 
 #======TO DO========
 #mudar ids dos componentes para ids unicos de cada pagina (Costs e income)
@@ -21,8 +22,13 @@ dash.register_page(__name__,
 )
 
 #====================DATA FRAME====================
-df = pd.read_excel('./data/base_faturamento.xlsx')
-df_total_costs = pd.read_excel('./data/base_custos_totais.xlsx')
+
+base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+income_file = os.path.join(base_dir, 'data', 'base_faturamento.xlsx')
+total_costs_file = os.path.join(base_dir, 'data', 'base_custos_totais.xlsx')
+df = pd.read_excel(income_file)
+df_total_costs = pd.read_excel(total_costs_file)
 
 
 #==================================================
